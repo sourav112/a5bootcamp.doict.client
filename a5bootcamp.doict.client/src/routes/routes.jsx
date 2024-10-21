@@ -10,27 +10,51 @@ import Catlistpage from "../Layout/Category/Catlistpage";
 import Catedit from "../Layout/Category/Catedit";
 import Productentrypage from "../Layout/Product/Productentrypage";
 import Producteditpage from "../Layout/Product/Producteditpage";
+import Productpage from "../Layout/Home/Productpage";
+import ProductDetailpage from "../Layout/Home/ProductDetailpage";
+import Dashboardpage from "../Dashboard/Dashboardpage";
 
 
 const routes = createBrowserRouter([
   
-    {
+  {
+    path: "/",
+    element: <App />,
+  },
+      {
         path: "/",
-        element: <App></App>,
+        element: <App />,
       },
+     // Home Page
+     {
+      path: "/cathome/:id",
+      element: <Productpage></Productpage>,
+      loader: ({ params }) => fetch(`http://localhost:5000/cathome/${params.id}`),
+    },
+    {
+      path: "/producthome/:id",
+      element: <ProductDetailpage></ProductDetailpage>,
+      loader: ({ params }) => fetch(`http://localhost:5000/producthome/${params.id}`),
+    },
+
+    
+  {
+    path: "/dashboard",
+    element: <Dashboardpage />,
+  },
       // User Related 
       {
         path: "/userreg",
-        element: <Userregpage></Userregpage>,
+        element: <Userregpage/>,
       },
       {
         path: "/userlist",
-        element: <UserList></UserList>,
+        element: <UserList/>,
         loader: () => fetch("http://localhost:5000/users"),
       },
       {
         path: "/useredit/:id",
-        element: <UserEdit></UserEdit>,
+        element: <UserEdit/>,
         loader: ({ params }) => fetch(`http://localhost:5000/user/${params.id}`),
       },
       
@@ -66,9 +90,6 @@ const routes = createBrowserRouter([
           element: <Producteditpage></Producteditpage>,
           loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
         },
-    
-
-  
 
 ]);
 
