@@ -52,7 +52,7 @@ function App() {
           </ul>
         </details>
       </li>
-      <li><NavLink to="/products" className="bg-white">Product</NavLink></li>
+      <li><NavLink to="/productentry" className="bg-white">Product</NavLink></li>
       <li><NavLink to="/catentry" className="bg-white">Category</NavLink></li>
     </ul>
   </div>
