@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom'
-
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Userregpage = () => {
-   
+  const { registerWithEmail } = useContext(AuthContext);
+  const navigate = useNavigate();
+
     const handleAddUser = (event) => {
         event.preventDefault();
     
@@ -12,11 +14,37 @@ const Userregpage = () => {
     
         const name = form.get("name");
         const email = form.get("email");
+        const password = form.get("password");
+        const img_url = form.get("img_url");
+        const address = form.get("address");
+        //const isAdmin=false;
+        //const isBlocked=false;
     
-        const user = { name, email };
+        const user = { name, email,password,img_url, address };
         console.log(user);
     
-        fetch("http://localhost:5000/users", {
+        registerWithEmail(email,password,name,img_url,address)
+        .then((result) => {
+          console.log(result.user);
+          handleUserProfile(name, img_url);
+          toast.success("User Registration Successful", {
+            position: "top-right",
+          });
+          navigate("/login");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        const handleUserProfile = (name, img_url) => {
+          const profile = { name: name, img_url: img_url };
+      
+          updateUserProfile(profile)
+            .then(() => {})
+            .catch((error) => {
+              console.log(error);
+            });
+        };
+       /* fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -32,22 +60,22 @@ const Userregpage = () => {
               });
             }
             event.target.reset();
-          });
+          });*/
       };
       return (
         <>
           <div className="mx-auto mt-20">
             <div className="flex justify-center justify-items-center">
               <h1 className="text-3xl font-bold text-center mb-10">
-                Bootacamp React Node MongoDB CRUD
+                Registration
               </h1>
               &nbsp;&nbsp;&nbsp;
-              <Link to="/userlist">
+              <Link to="/">
                 <button
                   className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white 
               py-2 px-4 border border-blue-500 hover:border-transparent rounded-tl-md rounded-br-md"
                 >
-                  Users
+                  Home
                 </button>
               </Link>
             </div>
@@ -92,7 +120,66 @@ const Userregpage = () => {
                   />
                 </div>
               </div>
-    
+              <div className="md:flex md:items-center mb-6">
+                <div className="md:w-1/3">
+                  <label
+                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                    htmlFor="email"
+                  >
+                    Password
+                  </label>
+                </div>
+                <div className="md:w-1/3">
+                  <input
+                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-none w-full py-2 px-4 text-gray-700 
+                  leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="Type your password here."
+                  />
+                </div>
+              </div>
+              <div className="md:flex md:items-center mb-6">
+                <div className="md:w-1/3">
+                  <label
+                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                    htmlFor="name"
+                  >
+                    Image URL
+                  </label>
+                </div>
+                <div className="md:w-1/3">
+                  <input
+                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-none w-full py-2 px-4 text-gray-700 
+                  leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    id="img_url"
+                    type="text"
+                    name="img_url"
+                    placeholder="your image"
+                  />
+                </div>
+              </div>
+              <div className="md:flex md:items-center mb-6">
+                <div className="md:w-1/3">
+                  <label
+                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                    htmlFor="name"
+                  >
+                    Address
+                  </label>
+                </div>
+                <div className="md:w-1/3">
+                  <input
+                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-none w-full py-2 px-4 text-gray-700 
+                  leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    id="address"
+                    type="text"
+                    name="address"
+                    placeholder="your address"
+                  />
+                </div>
+              </div>
               <div className="md:flex md:items-center">
                 <div className="md:w-1/3"></div>
                 <div className="md:w-2/3">

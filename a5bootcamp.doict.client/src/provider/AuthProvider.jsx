@@ -6,7 +6,7 @@ import {
   signOut,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import app from "../../src/firebase/firebase.init";
+import app from "../firebase/firebase.init";
 
 export const AuthContext = createContext(null);
 
@@ -24,8 +24,7 @@ const AuthProvider = ({ children }) => {
     email,
     password,
     name,
-    phone,
-    photo,
+    img_url,
     address
   ) => {
     try {
@@ -45,13 +44,12 @@ const AuthProvider = ({ children }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            uid: newUser.uid,
-            email: newUser.email,
-            displayName: name || "User",
-            phone: phone,
-            photoUrl: photo || "https://i.ibb.co/k6hTYW1/Alien-Dev.jpg",
+            //uid: newUser.uid,
+            email: email,
+            name: name ,
+            img_url: img_url || "https://i.ibb.co/k6hTYW1/Alien-Dev.jpg",
             address: address,
-            isAdmin: false, // Default role
+            isAdmin: true, // Default role
             isBlocked: false, // Default status
           }),
         }
@@ -70,16 +68,18 @@ const AuthProvider = ({ children }) => {
 
   // Logout user
   const logOutUser = () => {
+    console.log("Clicked Logout");
     return signOut(auth);
   };
 
   // Monitor auth state and fetch user data from backend
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      console.log("Provider ",currentUser.email);
       if (currentUser) {
         try {
           const res = await fetch(
-            `http://localhost:5000/user/${currentUser.uid}`
+            `http://localhost:5000/userprovider/${currentUser.email}`
           );
 
           if (!res.ok) {

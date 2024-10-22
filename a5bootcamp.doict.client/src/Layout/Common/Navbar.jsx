@@ -1,9 +1,31 @@
 import React from 'react'
-import { Link,NavLink } from 'react-router-dom'
+
+
+
+import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
+import { faSignIn } from '@fortawesome/free-solid-svg-icons';
+import { FaSignOutAlt } from 'react-icons/fa';
+
+
 function Navbar() {
+
+  const { user, logOutUser } = useContext(AuthContext);
+  console.log("Hello: ",user);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOutUser();
+    navigate("/login");
+  };
+
   return (
     <>
-           <div class="navbar bg-base-100">
+  <div class="navbar bg-base-100">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -55,7 +77,36 @@ function Navbar() {
     </ul>
   </div>
   <div class="navbar-end">
-    <a class="btn">Button</a>
+      {
+          user?(
+            <ul className='flex'>
+              <li><img className='rounded-full' alt="User" width="30" height="20" src={user.img_url} /></li>
+              <li> <button
+          onClick={handleLogout}
+          className="text-red-600 text-sm hover:underline flex items-center"
+        >
+          <FaSignOutAlt className="inline mr-2" />
+          Logout
+        </button></li>
+            </ul>
+            /**
+      <div className="w-10 flex">
+        <img className='rounded-full' alt="User" width="40" height="20" src={user.img_url} />
+         <div className='tooltip tooltip-bottom tooltip-info' data-tip="Logout">
+              <Link to={handleSignOut} className='ml-2'>
+              <button class="btn btn-outline btn-warning">
+                <FontAwesomeIcon icon={faSignIn}/> 
+              </button></Link>
+        </div>
+            
+      </div>*/
+    )
+    :(
+      <div className="w-10 rounded-full">
+           <NavLink to="/login" className="bg-white">Login</NavLink>
+      </div>
+    )}
+   
   </div>
 </div>
     </>

@@ -13,6 +13,7 @@ import Producteditpage from "../Layout/Product/Producteditpage";
 import Productpage from "../Layout/Home/Productpage";
 import ProductDetailpage from "../Layout/Home/ProductDetailpage";
 import Dashboardpage from "../Dashboard/Dashboardpage";
+import Loginpage from "../Layout/User/Loginpage";
 
 
 const routes = createBrowserRouter([
@@ -36,12 +37,14 @@ const routes = createBrowserRouter([
       element: <ProductDetailpage></ProductDetailpage>,
       loader: ({ params }) => fetch(`http://localhost:5000/producthome/${params.id}`),
     },
-
-    
-  {
-    path: "/dashboard",
-    element: <Dashboardpage />,
-  },
+    {
+      path: "/login",
+      element: <Loginpage />,
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboardpage />,
+    },
       // User Related 
       {
         path: "/userreg",

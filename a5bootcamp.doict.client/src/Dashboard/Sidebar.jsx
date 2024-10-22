@@ -46,7 +46,6 @@ function Sidebar() {
             Profile
           </NavLink>
   
-          
             <>
               {" "}
               {/* Admin Links */}
@@ -64,7 +63,7 @@ function Sidebar() {
                     All Users
                   </NavLink>
                   <NavLink
-                    to="/dashboard/createMessage"
+                    to="/catlist"
                     className={({ isActive }) =>
                       isActive
                         ? "text-blue-600"
@@ -72,14 +71,14 @@ function Sidebar() {
                     }
                   >
                     <FaPenAlt className="inline mr-2" />
-                    Create Message
+                    All Categories
                   </NavLink>
                 </>
              
               {/* User Links */}
              
                 <NavLink
-                  to="/dashboard/messages"
+                  to="/productlist"
                   className={({ isActive }) =>
                     isActive
                       ? "text-blue-600"
@@ -87,7 +86,7 @@ function Sidebar() {
                   }
                 >
                   <FaEnvelope className="inline mr-2" />
-                  Messages
+                  All Products
                 </NavLink>
               
             </>
