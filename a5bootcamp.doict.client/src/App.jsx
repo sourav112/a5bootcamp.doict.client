@@ -9,11 +9,10 @@ function App() {
 
   return (
     <>
-      <Navbar/>
       <Banner/>
       <CategorySection/>
       <FaqSection/>
-      <Footer/>
+      
     </>
   )
 }

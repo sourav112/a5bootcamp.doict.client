@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSave } from '@fortawesome/free-regular-svg-icons';
+import { faSave,faWindowRestore   } from '@fortawesome/free-regular-svg-icons';
 import { faSignIn } from '@fortawesome/free-solid-svg-icons';
 import { FaSignOutAlt } from 'react-icons/fa';
 
@@ -61,33 +61,28 @@ function Navbar() {
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-    <li><NavLink to="/userreg">User</NavLink></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><NavLink to="/productentry" className="bg-white">Product</NavLink></li>
-      <li><NavLink to="/catentry" className="bg-white">Category</NavLink></li>
-      <li><NavLink to="/dashboard" className="bg-white">Dashboard</NavLink></li>
+      <li><NavLink to="/" className="bg-white">Home</NavLink></li>
+      <li><NavLink to="/producthome" className="bg-white">All Product</NavLink></li>
     </ul>
   </div>
   <div class="navbar-end">
       {
           user?(
-            <ul className='flex'>
+            <ul className='flex gap-4'>
+              <li><NavLink to="/dashboard" className="bg-white"> 
+              <button class="btn btn-outline btn-primary">
+                <FontAwesomeIcon icon={faWindowRestore }/> 
+              </button>
+              
+              </NavLink></li>
               <li><img className='rounded-full' alt="User" width="30" height="20" src={user.img_url} /></li>
               <li> <button
-          onClick={handleLogout}
-          className="text-red-600 text-sm hover:underline flex items-center"
-        >
-          <FaSignOutAlt className="inline mr-2" />
-          Logout
-        </button></li>
+                    onClick={handleLogout}
+                    className="text-red-600 text-sm hover:underline flex items-center"
+                    >
+                  <FaSignOutAlt className="inline mr-2" />
+                Logout
+                </button></li>
             </ul>
             /**
       <div className="w-10 flex">

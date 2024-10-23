@@ -190,14 +190,7 @@ function UserList() {
             All Users List: {users.length}
           </h1>
           &nbsp;&nbsp;&nbsp;
-          <Link to="/">
-            <button
-              className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white 
-            py-2 px-4 border border-blue-500 hover:border-transparent rounded-tl-md rounded-br-md"
-            >
-              Home
-            </button>
-          </Link>
+          
         </div>
         <table className="border-collapse w-2/3 mx-auto">
           <thead>

@@ -11,7 +11,7 @@ import {
 
 function Sidebar() {
   
-    //const { user, logOutUser } = useContext(AuthContext);
+    const { user, logOutUser } = useContext(AuthContext);
     const navigate = useNavigate();
   
     const handleLogout = () => {
@@ -24,12 +24,12 @@ function Sidebar() {
         {/* User Profile Info */}
         <div className="flex flex-row lg:flex-col items-start gap-2">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+            src={user.img_url}
             alt="User Profile"
             className="w-16 rounded-full"
           />
-          <span>User Name</span>
-          <span className="text-xs">User Email</span>
+          <span>{user.name}</span>
+          <span className="text-xs">{user.email}</span>
         </div>
         <hr className="my-4" />
   
@@ -37,7 +37,7 @@ function Sidebar() {
         <nav className="flex flex-col gap-4">
           {/* Profile Link */}
           <NavLink
-            to="/dashboard/profile"
+            to={`/dashboard/useredit/${user._id}`}
             className={({ isActive }) =>
               isActive ? "text-blue-600" : "text-gray-600 hover:text-blue-500"
             }
@@ -52,7 +52,7 @@ function Sidebar() {
               
                 <>
                   <NavLink
-                    to="/userlist"
+                    to="/dashboard/userlist"
                     className={({ isActive }) =>
                       isActive
                         ? "text-blue-600"
@@ -63,7 +63,7 @@ function Sidebar() {
                     All Users
                   </NavLink>
                   <NavLink
-                    to="/catlist"
+                    to="/dashboard/catlist"
                     className={({ isActive }) =>
                       isActive
                         ? "text-blue-600"
@@ -78,7 +78,7 @@ function Sidebar() {
               {/* User Links */}
              
                 <NavLink
-                  to="/productlist"
+                  to="/dashboard/productlist"
                   className={({ isActive }) =>
                     isActive
                       ? "text-blue-600"

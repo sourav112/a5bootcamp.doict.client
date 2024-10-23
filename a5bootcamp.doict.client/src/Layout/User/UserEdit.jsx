@@ -40,9 +40,10 @@ function UserEdit() {
       <div className="mx-auto mt-20">
         <div className="flex justify-center justify-items-center">
           <h1 className="text-3xl font-bold text-center mb-10">
-            Update a User :
+            Update Your Account
           </h1>
           &nbsp;&nbsp;&nbsp;
+          {/** 
           <Link to="/">
             <button
               className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white 
@@ -59,7 +60,7 @@ function UserEdit() {
             >
               Users
             </button>
-          </Link>
+          </Link>*/}
         </div>
         <form onSubmit={handleEdit} className="w-full ">
           <div className="md:flex md:items-center mb-6">
