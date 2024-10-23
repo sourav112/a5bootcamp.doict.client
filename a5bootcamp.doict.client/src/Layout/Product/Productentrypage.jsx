@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom'
-
+import { Helmet } from 'react-helmet-async';
 function Productentrypage() {
   const loadedCats = useLoaderData();
   const [cats, setCat] = useState(loadedCats);
@@ -42,6 +42,9 @@ function Productentrypage() {
   };
   return (
     <>
+    <Helmet>
+          <title>Moviebazar| Product</title>
+        </Helmet>
       <div className="mx-auto mt-20">
         <div className="flex justify-center justify-items-center">
           <h1 className="text-3xl font-bold text-center mb-10">

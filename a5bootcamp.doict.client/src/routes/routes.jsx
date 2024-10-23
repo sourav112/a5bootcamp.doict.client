@@ -33,7 +33,7 @@ const routes = createBrowserRouter([
      // Home Page
     {
       path: "/cathome/:id",
-      element: <Productpage></Productpage>,
+      element:<PrivateRoute><Productpage></Productpage></PrivateRoute> ,
       loader: ({ params }) => fetch(`http://localhost:5000/cathome/${params.id}`),
     },
     {

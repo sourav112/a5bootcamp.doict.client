@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -34,6 +35,9 @@ const Catentrypage=()=> {
       };
       return (
         <>
+        <Helmet>
+          <title>Moviebazar| Category</title>
+        </Helmet>
           <div className="mx-auto mt-20">
             <div className="flex justify-center justify-items-center">
               <h1 className="text-3xl font-bold text-center mb-10">

@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
+import { Helmet } from 'react-helmet-async';
 //import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Loginpage = () => {
@@ -42,7 +43,11 @@ const Loginpage = () => {
     };
   
 return(
+  
     <div className='flex items-center justify-center'>
+      <Helmet>
+          <title>Moviebazar| Login</title>
+        </Helmet>
     <div class="flex justify-center items-center w-screen h-screen p-5">
   <div class="bg-white shadow-md dark:shadow-gray-600 rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-full md:w-1/3">
       <h1 class="text-2xl font-semibold mb-4 text-center text-gray-900">Login Here</h1>

@@ -23,22 +23,22 @@ function CategorySection() {
     }, []);
   return (
     <>
-    <div className='text-center text-red-700 uppercase decoration-solid text-lg m-5'>
+    <div className='text-center text-red-700 uppercase decoration-solid text-2xl m-5'>
         <h2>Movie Category</h2>
     </div>
-    <div className='grid md:grid-cols-4 space-x-2 ml-10 mr-10 sm: grid-cols-1'>
+    <div className='grid md:grid-cols-5 space-x-2 ml-10 mr-10 sm: grid-cols-1'>
     {getCat.map((cat) => (
         <div class="card bg-base-100 shadow-xl mt-5">
-        <figure class="px-10 pt-10">
+        <figure class="px-5 pt-5">
         <img
         src="https://img.freepik.com/free-vector/cinema-realistic-poster-with-illuminated-bucket-popcorn-drink-3d-glasses-reel-tickets-blue-background-with-tapes-vector-illustration_1284-77070.jpg"
         alt="Movies"
-        class="rounded-xl" />
+        className="rounded-xl w-36" />
         </figure>
         <div class="card-body items-center text-center">
         <h2 class="card-title">{cat.cat}</h2>
         <div class="card-actions">
-        <Link to={`/cathome/${cat.cat}`}><button class="btn btn-primary"><FontAwesomeIcon icon={faEye}/> Get Details</button></Link>
+        <Link to={`/cathome/${cat.cat}`}><button class="btn btn-primary"><FontAwesomeIcon icon={faEye}/> View Movies</button></Link>
         </div>
         </div>
         </div>

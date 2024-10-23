@@ -4,7 +4,8 @@ import { useState,useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
 import { AuthContext } from "../../provider/AuthProvider";
-
+import { Helmet } from 'react-helmet-async';
+import { FaStar } from "react-icons/fa";
 function ProductDetailpage() {
     const loadedProduct = useLoaderData();
     const { user } = useContext(AuthContext);
@@ -60,7 +61,7 @@ function ProductDetailpage() {
       .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            if (data.modifiedCount) {
+            if (data.insertedId) {
               toast.success("Buy Successfully.Please Wait for Admin Approval.", {
                 position: "top-right",
               });
@@ -74,16 +75,22 @@ function ProductDetailpage() {
   };
   return (
     <>
+    <Helmet>
+          <title>Moviebazar| Details</title>
+        </Helmet>
     <div class="card bg-base-100 shadow-xl mt-5">
     <figure class="px-10 pt-10">
     <img
     src={loadedProduct.image}
     alt="Movies"
-    class="rounded-xl" />
+    className="rounded-xl w-64" />
     </figure>
     <div class="card-body items-center text-center">
     <h2 class="card-title">{loadedProduct.category}</h2>
-    <p>{loadedProduct.name}</p>
+    <p>Movie Name: {loadedProduct.name}</p>
+    <p className="text-justify">{loadedProduct.details}</p>
+    <p className="flex justify-center items-center"><FaStar className="text-orange-400"/>: {loadedProduct.rating}</p>
+    <p className="flex justify-center items-center">Price: {loadedProduct.price}$</p>
     <div class="card-actions">
     <button  onClick={() => openEditModal(loadedProduct)} class="btn btn-primary"><FontAwesomeIcon icon={faEye}/> Buy Now</button>
     </div>
@@ -154,7 +161,7 @@ function ProductDetailpage() {
               onClick={handleProductEntry}
               className="bg-blue-500 text-white px-4 py-2 rounded"
             >
-              Save Changes
+              Buy Now
             </button>
             <button
               onClick={() => setIsEditModalOpen(false)}

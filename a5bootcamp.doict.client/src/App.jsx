@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import Footer from './Layout/Common/Footer'
 import Navbar from './Layout/Common/Navbar'
 import Banner from './Layout/Home/Banner'
@@ -9,6 +10,9 @@ function App() {
 
   return (
     <>
+    <Helmet>
+          <title>Moviebazar| Home</title>
+    </Helmet>
       <Banner/>
       <CategorySection/>
       <FaqSection/>

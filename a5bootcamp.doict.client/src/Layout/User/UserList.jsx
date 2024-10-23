@@ -324,6 +324,7 @@ function UserList() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
+                readOnly
               />
             </div>
             <div className="mb-4">

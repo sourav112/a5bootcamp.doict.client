@@ -99,6 +99,7 @@ const AuthProvider = ({ children }) => {
         }
       } else {
         setUser(null);
+        //signOut(auth);
       }
     });
 

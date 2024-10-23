@@ -8,7 +8,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave,faWindowRestore   } from '@fortawesome/free-regular-svg-icons';
 import { faSignIn } from '@fortawesome/free-solid-svg-icons';
-import { FaSignOutAlt } from 'react-icons/fa';
+import { FaHome, FaProductHunt, FaSign, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 
 
 function Navbar() {
@@ -19,8 +19,14 @@ function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logOutUser();
-    navigate("/login");
+    logOutUser()
+      .then(() => {
+        navigate("/login");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -55,16 +61,16 @@ function Navbar() {
     </div>
     <Link to="/" class="btn btn-ghost text-xl"><img src="https://img.freepik.com/free-vector/film-device-reel_24908-82978.jpg" className="w-16 rounded-full" />Movie Bazar</Link>
   </div>
-  <div class="navbar-center hidden lg:flex">
+  <div class="navbar-center hidden lg:flex gap-4">
     <ul class="menu menu-horizontal px-1">
-      <li><NavLink to="/" className="bg-white">Home</NavLink></li>
-      <li><NavLink to="/producthome" className="bg-white">All Product</NavLink></li>
+      <li><NavLink to="/" className="bg-white"><FaHome/> Home</NavLink></li>
+      <li><NavLink to="/producthome" className="bg-white"><FaProductHunt/> All Product</NavLink></li>
     </ul>
   </div>
-  <div class="navbar-end">
+  <div class="navbar-end ">
       {
           user?(
-            <ul className='flex gap-4'>
+            <ul className='flex gap-4 justify-center items-center'>
               <li><NavLink to="/dashboard" className="bg-white"> 
               <button class="btn btn-outline btn-primary">
                 <FontAwesomeIcon icon={faWindowRestore }/> 
@@ -82,9 +88,10 @@ function Navbar() {
             </ul>
     )
     :(
-      <div className="w-10 rounded-full">
-           <NavLink to="/login" className="bg-white">Login</NavLink>
-      </div>
+      <ul className='flex gap-4 justify-center items-center'>
+        <li><NavLink to="/login" className="bg-white"><FaSignInAlt className="inline mr-2"/></NavLink></li>
+      </ul>
+      
     )}
    
   </div>

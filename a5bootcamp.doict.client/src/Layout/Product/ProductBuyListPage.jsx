@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaMoneyCheck } from 'react-icons/fa6';
-
+import { Helmet } from 'react-helmet-async';
 const ProductBuyListPage = () => {
     
     const { user } = useContext(AuthContext);
@@ -29,6 +29,9 @@ const ProductBuyListPage = () => {
 
     return (
         <div>
+          <Helmet>
+          <title>Moviebazar| Buy</title>
+        </Helmet>
             <div className="flex justify-center justify-items-center">
           <h1 className="text-3xl font-bold text-center mb-10">
            Product Payment Status: {products.length}

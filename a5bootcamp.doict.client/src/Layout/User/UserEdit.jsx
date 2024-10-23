@@ -100,6 +100,7 @@ function UserEdit() {
                 type="email"
                 name="email"
                 defaultValue={loadedUser.email}
+                readOnly
               />
             </div>
           </div>
