@@ -55,7 +55,7 @@ function Producteditpage() {
           toast.success("Product Updated Successfully", {
             position: "top-right",
           });
-          navigate("/productlist");
+          navigate("/dashboard/productlist");
         }
       });
   };

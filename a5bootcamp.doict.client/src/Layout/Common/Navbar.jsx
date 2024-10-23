@@ -45,19 +45,15 @@ function Navbar() {
       <ul
         tabindex="0"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><NavLink to="/users">User</NavLink></li>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/producthome" className="bg-white">All Products</NavLink></li>
         <li>
-          <a>Parent</a>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
+          
         </li>
-        <li><NavLink to="/products" className="bg-white">Products</NavLink></li>
-        <li><NavLink to="/dashboard" className="bg-white">Dashboard</NavLink></li>
+        
       </ul>
     </div>
-    <Link to="/" class="btn btn-ghost text-xl">daisyUI</Link>
+    <Link to="/" class="btn btn-ghost text-xl"><img src="https://img.freepik.com/free-vector/film-device-reel_24908-82978.jpg" className="w-16 rounded-full" />Movie Bazar</Link>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -84,17 +80,6 @@ function Navbar() {
                 Logout
                 </button></li>
             </ul>
-            /**
-      <div className="w-10 flex">
-        <img className='rounded-full' alt="User" width="40" height="20" src={user.img_url} />
-         <div className='tooltip tooltip-bottom tooltip-info' data-tip="Logout">
-              <Link to={handleSignOut} className='ml-2'>
-              <button class="btn btn-outline btn-warning">
-                <FontAwesomeIcon icon={faSignIn}/> 
-              </button></Link>
-        </div>
-            
-      </div>*/
     )
     :(
       <div className="w-10 rounded-full">

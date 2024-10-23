@@ -73,7 +73,7 @@ function Catlistpage() {
                   <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
                     Actions
                   </span>
-                  <Link to={`/catedit/${cat._id}`}>
+                  <Link to={`/dashboard/catedit/${cat._id}`}>
                     <button
                       className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 
             border border-blue-500 hover:border-transparent rounded-none"

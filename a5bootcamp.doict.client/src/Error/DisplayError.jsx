@@ -6,7 +6,7 @@ const DisplayError = () => {
     return (
     <div className="grid place-items-center shadow-xl p-6 rounded-lg">
       
-      <img className="w-96" src={errorLogo} alt="Error Image" />
+    
       <p className="text-red-400 mt-16 text-5xl font-bold">
         {error.statusText || error.message}
       </p>

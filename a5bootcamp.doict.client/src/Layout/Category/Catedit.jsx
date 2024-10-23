@@ -31,7 +31,7 @@ function Catedit() {
           toast.success("Category Updated Successfully", {
             position: "top-right",
           });
-          navigate("/catlist");
+          navigate("/dashboard/catlist");
         }
       });
   };

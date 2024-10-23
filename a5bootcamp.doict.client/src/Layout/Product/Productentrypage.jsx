@@ -15,8 +15,12 @@ function Productentrypage() {
 
     const name = form.get("name");
     const category = form.get("category");
+    const details = form.get("details");
+    const image = form.get("image");
+    const price = form.get("price");
+    const rating = form.get("rating");
 
-    const product = { name, category };
+    const product = { name, category, details, image, price, rating };
     console.log(product);
     fetch("http://localhost:5000/products", {
       method: "POST",
@@ -71,6 +75,86 @@ function Productentrypage() {
                 type="text"
                 name="name"
                 placeholder="product name"
+              />
+            </div>
+          </div>
+          <div className="md:flex md:items-center mb-6">
+            <div className="md:w-1/3">
+              <label
+                className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                htmlFor="name"
+              >
+                Product Details
+              </label>
+            </div>
+            <div className="md:w-1/3">
+              <input
+                className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-none w-full py-2 px-4 text-gray-700 
+              leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                id="details"
+                type="text"
+                name="details"
+                placeholder="product details"
+              />
+            </div>
+          </div>
+          <div className="md:flex md:items-center mb-6">
+            <div className="md:w-1/3">
+              <label
+                className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                htmlFor="name"
+              >
+                Product image
+              </label>
+            </div>
+            <div className="md:w-1/3">
+              <input
+                className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-none w-full py-2 px-4 text-gray-700 
+              leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                id="image"
+                type="text"
+                name="image"
+                placeholder="product image url"
+              />
+            </div>
+          </div>
+          <div className="md:flex md:items-center mb-6">
+            <div className="md:w-1/3">
+              <label
+                className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                htmlFor="name"
+              >
+                Product Price
+              </label>
+            </div>
+            <div className="md:w-1/3">
+              <input
+                className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-none w-full py-2 px-4 text-gray-700 
+              leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                id="price"
+                type="text"
+                name="price"
+                placeholder="product price"
+              />
+            </div>
+          </div>
+          <div className="md:flex md:items-center mb-6">
+            <div className="md:w-1/3">
+              <label
+                className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                htmlFor="name"
+              >
+                Product Rating
+              </label>
+            </div>
+            <div className="md:w-1/3">
+              <input
+                className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-none w-full py-2 px-4 text-gray-700 
+              leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                id="rating"
+                type="text"
+                name="rating"
+                placeholder="product rating"
               />
             </div>
           </div>

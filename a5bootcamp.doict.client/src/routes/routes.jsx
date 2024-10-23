@@ -17,6 +17,7 @@ import Loginpage from "../Layout/User/Loginpage";
 import PrivateRoute from "../routes/PrivateRoute";
 import DisplayError from "../Error/DisplayError";
 import CommonLayout from "../Layout/Common/CommonLayout";
+import ProductBuyListPage from "../Layout/Product/ProductBuyListPage";
 
 const routes = createBrowserRouter([
   
@@ -51,17 +52,22 @@ const routes = createBrowserRouter([
         ),
       loader: ({ params }) => fetch(`http://localhost:5000/products/`),
     },
-    ]
-  },
-     
+    // User Related 
+    {
+      path: "/userreg",
+      element: <Userregpage/>,
+    },
     {
       path: "/login",
       element: <Loginpage />,
     },
-
+    ]
+  },
+    
     {
       path: "/dashboard",
       element: <Dashboardpage />,
+      errorElement: <DisplayError/>,
       children:[
        
 // User Related 
@@ -74,6 +80,12 @@ const routes = createBrowserRouter([
         path: "/dashboard/useredit/:id",
         element: <UserEdit></UserEdit>,
         loader: ({ params }) => fetch(`http://localhost:5000/user/${params.id}`),
+      },
+      
+       // Product Buy Related 
+       {
+        path: "/dashboard/productbuylist",
+        element: <ProductBuyListPage></ProductBuyListPage>,
       },
        // Category Related 
        {
@@ -108,11 +120,7 @@ const routes = createBrowserRouter([
       },
       ]
     },
-      // User Related 
-      {
-        path: "/userreg",
-        element: <Userregpage/>,
-      },
+      
       
      
 

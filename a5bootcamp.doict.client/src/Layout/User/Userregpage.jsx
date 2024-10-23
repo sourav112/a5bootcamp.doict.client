@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Userregpage = () => {
-  const { registerWithEmail } = useContext(AuthContext);
+  const { registerWithEmail,updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
     const handleAddUser = (event) => {
@@ -17,33 +17,69 @@ const Userregpage = () => {
         const password = form.get("password");
         const img_url = form.get("img_url");
         const address = form.get("address");
+
+        if(name=="")
+        {
+          toast.error("Please fillup your name", {
+            position: "top-center",
+          });
+        }
+          else if(email=="")
+            {
+              toast.error("Please fillup your Email", {
+                position: "top-center",
+              });
+            }
+            else if(password=="")
+              {
+                toast.error("Please fillup your password", {
+                  position: "top-center",
+                });
+              }
+            else if(img_url=="")
+              {
+                toast.error("Please fillup your Image URL", {
+                  position: "top-center",
+                });
+              }
+            else if(address=="")
+              {
+                toast.error("Please fillup your Address", {
+                  position: "top-center",
+                });
+              }
+
+        else{
+         
+          const user = { name, email,password,img_url, address };
+          console.log(user);
+      
+          registerWithEmail(email,password,name,img_url,address)
+          .then((result) => {
+            console.log(result.user);
+            handleUserProfile(name, img_url);
+            toast.success("User Registration Successful", {
+              position: "top-right",
+            });
+            navigate("/login");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+          const handleUserProfile = (name, img_url) => {
+            const profile = { name: name, img_url: img_url };
+        
+            updateUserProfile(profile)
+              .then(() => {})
+              .catch((error) => {
+                console.log(error);
+              });
+          };
+        }
         //const isAdmin=false;
         //const isBlocked=false;
     
-        const user = { name, email,password,img_url, address };
-        console.log(user);
-    
-        registerWithEmail(email,password,name,img_url,address)
-        .then((result) => {
-          console.log(result.user);
-          handleUserProfile(name, img_url);
-          toast.success("User Registration Successful", {
-            position: "top-right",
-          });
-          navigate("/login");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-        const handleUserProfile = (name, img_url) => {
-          const profile = { name: name, img_url: img_url };
-      
-          updateUserProfile(profile)
-            .then(() => {})
-            .catch((error) => {
-              console.log(error);
-            });
-        };
+        
        /* fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {

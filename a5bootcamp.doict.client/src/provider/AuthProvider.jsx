@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.init";
 
@@ -49,7 +50,7 @@ const AuthProvider = ({ children }) => {
             name: name ,
             img_url: img_url || "https://i.ibb.co/k6hTYW1/Alien-Dev.jpg",
             address: address,
-            isAdmin: true, // Default role
+            isAdmin: false, // Default role
             isBlocked: false, // Default status
           }),
         }
@@ -70,6 +71,11 @@ const AuthProvider = ({ children }) => {
   const logOutUser = () => {
     console.log("Clicked Logout");
     return signOut(auth);
+  };
+
+  const updateUserProfile = (profile) => {
+    //setLoading(true);
+    return updateProfile(auth.currentUser, profile);
   };
 
   // Monitor auth state and fetch user data from backend
@@ -103,7 +109,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ registerWithEmail, user, loginWithEmail, logOutUser }}
+      value={{ registerWithEmail,updateUserProfile, user, loginWithEmail, logOutUser }}
     >
       {children}
     </AuthContext.Provider>

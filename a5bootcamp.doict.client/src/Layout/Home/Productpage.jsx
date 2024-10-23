@@ -9,13 +9,13 @@ function Productpage() {
     console.log(loadedProduct);
   return (
     <>
-    <div className='grid md:grid-cols-3 space-x-2 m-10 sm: grid-cols-1'>
+    <div className='grid md:grid-cols-4 space-x-2 m-10 sm: grid-cols-1'>
 
     {loadedProduct.map((product) => (
         <div class="card bg-base-100 shadow-xl mt-5">
         <figure class="px-10 pt-10">
         <img
-        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+        src={product.image}
         alt="Shoes"
         class="rounded-xl" />
         </figure>

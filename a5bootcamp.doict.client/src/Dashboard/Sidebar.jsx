@@ -7,6 +7,7 @@ import {
   FaEnvelope,
   FaSignOutAlt,
   FaPenAlt,
+  FaShoppingCart,
 } from "react-icons/fa";
 
 function Sidebar() {
@@ -36,6 +37,7 @@ function Sidebar() {
         {/* Sidebar Links */}
         <nav className="flex flex-col gap-4">
           {/* Profile Link */}
+          
           <NavLink
             to={`/dashboard/useredit/${user._id}`}
             className={({ isActive }) =>
@@ -45,11 +47,20 @@ function Sidebar() {
             <FaUser className="inline mr-2" />
             Profile
           </NavLink>
+          <NavLink
+            to={`/dashboard/productbuylist`}
+            className={({ isActive }) =>
+              isActive ? "text-blue-600" : "text-gray-600 hover:text-blue-500"
+            }
+          >
+            <FaShoppingCart className="inline mr-2" />
+            My Product
+          </NavLink>
   
             <>
               {" "}
               {/* Admin Links */}
-              
+              {user?.isAdmin && (
                 <>
                   <NavLink
                     to="/dashboard/userlist"
@@ -73,11 +84,7 @@ function Sidebar() {
                     <FaPenAlt className="inline mr-2" />
                     All Categories
                   </NavLink>
-                </>
-             
-              {/* User Links */}
-             
-                <NavLink
+                  <NavLink
                   to="/dashboard/productlist"
                   className={({ isActive }) =>
                     isActive
@@ -88,9 +95,14 @@ function Sidebar() {
                   <FaEnvelope className="inline mr-2" />
                   All Products
                 </NavLink>
+                </>
+             )}
+              {/* User Links */}
+             
+              
               
             </>
-          
+                
           {/* Logout */}
           <button
             onClick={handleLogout}
