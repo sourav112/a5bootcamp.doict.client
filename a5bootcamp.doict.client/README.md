@@ -8,4 +8,7 @@ Frontend (React, Tailwind/any others, Firebase)
 6. Dashboard Admin Dashboard.
 7. Profile Editing (For Both Admin and User)
 8. Other Frontend Features.
-9. env Setup for Security   
+9. env Setup for Security.
+10. Deployment in netlify.
+
+## https://sourav39-movie-bazar.netlify.app/   
