@@ -10,7 +10,7 @@ function Producteditpage() {
   useEffect(() => {
     const fetchCategories = async () => {
         try {
-            const res = await fetch('http://localhost:5000/cats');
+            const res = await fetch(import.meta.env.VITE_BACKEND_LINK+'/cats');
             const data = await res.json();
             setCategories(data);
            
@@ -41,7 +41,7 @@ function Producteditpage() {
     const updatedProduct = { name, category };
     console.log("UpdatedProduct:", updatedProduct);
 
-    fetch(`http://localhost:5000/product/${loadedProduct._id}`, {
+    fetch(import.meta.env.VITE_BACKEND_LINK+`/product/${loadedProduct._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -63,24 +63,17 @@ function Producteditpage() {
     <div className="mx-auto mt-20">
       <div className="flex justify-center justify-items-center">
         <h1 className="text-3xl font-bold text-center mb-10">
-          Update Product :
+          Update Movie :
         </h1>
         &nbsp;&nbsp;&nbsp;
-        <Link to="/">
-          <button
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white 
-    py-2 px-4 border border-blue-500 hover:border-transparent rounded-tl-md rounded-br-md"
-          >
-            Home
-          </button>
-        </Link>
+        
         &nbsp;&nbsp;&nbsp;
         <Link to="/productlist">
           <button
             className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white 
     py-2 px-4 border border-blue-500 hover:border-transparent rounded-tl-md rounded-br-md"
           >
-            Product
+            Movies
           </button>
         </Link>
       </div>
@@ -133,7 +126,7 @@ function Producteditpage() {
         font-bold py-2 px-4 rounded-none"
               type="submit"
             >
-              Update Product
+              Update Movie
             </button>
           </div>
         </div>

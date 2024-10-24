@@ -9,7 +9,7 @@ function Catlistpage() {
   
     const handleDelete = (_id) => {
       console.log(_id);
-      fetch(`http://localhost:5000/cat/${_id}`, {
+      fetch(import.meta.env.VITE_BACKEND_LINK+`/cat/${_id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

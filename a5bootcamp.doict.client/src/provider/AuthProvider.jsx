@@ -85,7 +85,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         try {
           const res = await fetch(
-            `http://localhost:5000/userprovider/${currentUser.email}`
+            import.meta.env.VITE_BACKEND_LINK+`/userprovider/${currentUser.email}`
           );
 
           if (!res.ok) {

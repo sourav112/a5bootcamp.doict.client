@@ -18,7 +18,7 @@ function UserEdit() {
       const updatedUser = { name, email };
       console.log("UpdatedUser:", updatedUser);
   
-      fetch(`http://localhost:5000/user/${loadedUser._id}`, {
+      fetch(import.meta.env.VITE_BACKEND_LINK+`/user/${loadedUser._id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

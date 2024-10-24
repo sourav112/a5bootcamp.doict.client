@@ -49,7 +49,7 @@ function ProductDetailpage() {
       console.log(buyProduct);
 
       await fetch(
-        `http://localhost:5000/productBuy`,
+        import.meta.env.VITE_BACKEND_LINK+`/productBuy`,
         {
           method: "POST",
           headers: {

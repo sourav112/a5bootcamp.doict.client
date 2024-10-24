@@ -22,7 +22,7 @@ function UserList() {
   
     const handleDelete = (_id) => {
       console.log(_id);
-      fetch(`http://localhost:5000/user/${_id}`, {
+      fetch(import.meta.env.VITE_BACKEND_LINK+`/user/${_id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -42,7 +42,7 @@ function UserList() {
   const fetchUsers = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/users"
+        import.meta.env.VITE_BACKEND_LINK+"/users"
       );
       const data = await response.json();
       setUsers(data);
@@ -66,7 +66,7 @@ function UserList() {
       console.log({ updatedUser });
 
       await fetch(
-        `http://localhost:5000/user/${selectedUser._id}`,
+        import.meta.env.VITE_BACKEND_LINK+`/user/${selectedUser._id}`,
         {
           method: "PUT",
           headers: {
@@ -97,7 +97,7 @@ function UserList() {
       const updatedUser = { ...selectedUser, isAdmin: !selectedUser?.isAdmin };
       console.log({ updatedUser });
       await fetch(
-        `http://localhost:5000/user/${selectedUser._id}`,
+        import.meta.env.VITE_BACKEND_LINK+`/user/${selectedUser._id}`,
         {
           method: "PUT",
           headers: {
@@ -147,7 +147,7 @@ function UserList() {
       };
 
       await fetch(
-        `http://localhost:5000/user/${selectedUser._id}`,
+        import.meta.env.VITE_BACKEND_LINK+`/user/${selectedUser._id}`,
         {
           method: "PUT",
           headers: {

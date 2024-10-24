@@ -8,6 +8,7 @@ import {
   FaSignOutAlt,
   FaPenAlt,
   FaShoppingCart,
+  FaFilm,
 } from "react-icons/fa";
 
 function Sidebar() {
@@ -54,7 +55,7 @@ function Sidebar() {
             }
           >
             <FaShoppingCart className="inline mr-2" />
-            My Product
+            My Movie
           </NavLink>
   
             <>
@@ -92,8 +93,8 @@ function Sidebar() {
                       : "text-gray-600 hover:text-blue-500"
                   }
                 >
-                  <FaEnvelope className="inline mr-2" />
-                  All Products
+                  <FaFilm className="inline mr-2" />
+                  All Movies
                 </NavLink>
                 </>
              )}

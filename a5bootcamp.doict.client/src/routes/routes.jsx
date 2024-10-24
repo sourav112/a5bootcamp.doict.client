@@ -34,12 +34,12 @@ const routes = createBrowserRouter([
     {
       path: "/cathome/:id",
       element:<PrivateRoute><Productpage></Productpage></PrivateRoute> ,
-      loader: ({ params }) => fetch(`http://localhost:5000/cathome/${params.id}`),
+      loader: ({ params }) => fetch(import.meta.env.VITE_BACKEND_LINK+`/cathome/${params.id}`),
     },
     {
       path: "/producthome/:id",
       element: <ProductDetailpage></ProductDetailpage>,
-      loader: ({ params }) => fetch(`http://localhost:5000/producthome/${params.id}`),
+      loader: ({ params }) => fetch(import.meta.env.VITE_BACKEND_LINK+`/producthome/${params.id}`),
     },
 
     //All Product Loading
@@ -50,7 +50,7 @@ const routes = createBrowserRouter([
             <Productpage/>
         </PrivateRoute>
         ),
-      loader: ({ params }) => fetch(`http://localhost:5000/products/`),
+      loader: ({ params }) => fetch(import.meta.env.VITE_BACKEND_LINK+`/products/`),
     },
     // User Related 
     {
@@ -74,12 +74,12 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/userlist",
         element: <UserList/>,
-        loader: () => fetch("http://localhost:5000/users"),
+        loader: () => fetch(import.meta.env.VITE_BACKEND_LINK+"/users"),
       },
       {
         path: "/dashboard/useredit/:id",
         element: <UserEdit></UserEdit>,
-        loader: ({ params }) => fetch(`http://localhost:5000/user/${params.id}`),
+        loader: ({ params }) => fetch(import.meta.env.VITE_BACKEND_LINK+`/user/${params.id}`),
       },
       
        // Product Buy Related 
@@ -95,28 +95,28 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/catlist",
         element: <Catlistpage></Catlistpage>,
-        loader: () => fetch("http://localhost:5000/cats"),
+        loader: () => fetch(import.meta.env.VITE_BACKEND_LINK+"/cats"),
       },
       {
         path: "/dashboard/catedit/:id",
         element: <Catedit></Catedit>,
-        loader: ({ params }) => fetch(`http://localhost:5000/cats/${params.id}`),
+        loader: ({ params }) => fetch(import.meta.env.VITE_BACKEND_LINK+`/cats/${params.id}`),
       },
        // Product Related 
        {
         path: "/dashboard/productentry",
         element: <Productentrypage></Productentrypage>,
-        loader: () => fetch("http://localhost:5000/cats"),
+        loader: () => fetch(import.meta.env.VITE_BACKEND_LINK+"/cats"),
       },
       {
         path: "/dashboard/productlist",
         element: <Productlistpage></Productlistpage>,
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () => fetch(import.meta.env.VITE_BACKEND_LINK+"/products"),
       },
       {
         path: "/dashboard/productedit/:id",
         element: <Producteditpage></Producteditpage>,
-        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
+        loader: ({ params }) => fetch(import.meta.env.VITE_BACKEND_LINK+`/product/${params.id}`),
       },
       ]
     },

@@ -15,7 +15,7 @@ const Catentrypage=()=> {
         const user = { cat };
         console.log(user);
     
-        fetch("http://localhost:5000/cats", {
+        fetch(import.meta.env.VITE_BACKEND_LINK+"/cats", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -20,9 +20,42 @@ function Productentrypage() {
     const price = form.get("price");
     const rating = form.get("rating");
 
+
+    if(name=="")
+      {
+        toast.error("Please fillup Movie name", {
+          position: "top-center",
+        });
+      }
+        
+          else if(details=="")
+            {
+              toast.error("Please fillup Movie Details", {
+                position: "top-center",
+              });
+            }
+          else if(image=="")
+            {
+              toast.error("Please fillup Image URL", {
+                position: "top-center",
+              });
+            }
+          else if(price=="")
+            {
+              toast.error("Please fillup price", {
+                position: "top-center",
+              });
+            }
+            else if(rating=="")
+              {
+                toast.error("Please fillup rating", {
+                  position: "top-center",
+                });
+              }
+    else{
     const product = { name, category, details, image, price, rating };
     console.log(product);
-    fetch("http://localhost:5000/products", {
+    fetch(import.meta.env.VITE_BACKEND_LINK+"/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -39,16 +72,17 @@ function Productentrypage() {
         }
         event.target.reset();
       });
+    }
   };
   return (
     <>
     <Helmet>
-          <title>Moviebazar| Product</title>
+          <title>Moviebazar| Movies</title>
         </Helmet>
       <div className="mx-auto mt-20">
         <div className="flex justify-center justify-items-center">
           <h1 className="text-3xl font-bold text-center mb-10">
-            Product Entry
+            Movie Details Entry
           </h1>
           &nbsp;&nbsp;&nbsp;
           <Link to="/dashboard/productlist">
@@ -56,7 +90,7 @@ function Productentrypage() {
               className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white 
           py-2 px-4 border border-blue-500 hover:border-transparent rounded-tl-md rounded-br-md"
             >
-              Products
+              Movies
             </button>
           </Link>
         </div>
@@ -67,7 +101,7 @@ function Productentrypage() {
                 className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                 htmlFor="name"
               >
-                Product Name
+                Movie Name
               </label>
             </div>
             <div className="md:w-1/3">
@@ -87,7 +121,7 @@ function Productentrypage() {
                 className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                 htmlFor="name"
               >
-                Product Details
+                Details
               </label>
             </div>
             <div className="md:w-1/3">
@@ -107,7 +141,7 @@ function Productentrypage() {
                 className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                 htmlFor="name"
               >
-                Product image
+                image URL
               </label>
             </div>
             <div className="md:w-1/3">
@@ -127,7 +161,7 @@ function Productentrypage() {
                 className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                 htmlFor="name"
               >
-                Product Price
+                Price
               </label>
             </div>
             <div className="md:w-1/3">
@@ -147,7 +181,7 @@ function Productentrypage() {
                 className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                 htmlFor="name"
               >
-                Product Rating
+                Rating
               </label>
             </div>
             <div className="md:w-1/3">
@@ -189,7 +223,7 @@ function Productentrypage() {
               font-bold py-2 px-4 rounded-none"
                 type="submit"
               >
-                Add Product
+                Add Movie
               </button>
             </div>
           </div>

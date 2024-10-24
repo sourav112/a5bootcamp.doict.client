@@ -9,7 +9,7 @@ function Productlistpage() {
 
   const handleDelete = (_id) => {
     console.log(_id);
-    fetch(`http://localhost:5000/product/${_id}`, {
+    fetch(import.meta.env.VITE_BACKEND_LINK+`/product/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -29,7 +29,7 @@ function Productlistpage() {
     <div className="mt-14">
       <div className="flex justify-center justify-items-center">
         <h1 className="text-3xl font-bold text-center mb-10">
-          All Product List: {products.length}
+          All Movie List: {products.length}
         </h1>
         &nbsp;&nbsp;&nbsp;
         <Link to="/dashboard/productentry">
@@ -37,7 +37,7 @@ function Productlistpage() {
             className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white 
           py-2 px-4 border border-blue-500 hover:border-transparent rounded-tl-md rounded-br-md"
           >
-            ADD PRODUCT
+            ADD Movies
           </button>
         </Link>
       </div>
@@ -45,7 +45,7 @@ function Productlistpage() {
         <thead>
           <tr>
             <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-              Product Name
+              Movie Name
             </th>
             <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
               Category

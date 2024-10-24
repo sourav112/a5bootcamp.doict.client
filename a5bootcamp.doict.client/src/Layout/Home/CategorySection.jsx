@@ -10,7 +10,7 @@ function CategorySection() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const res = await fetch('http://localhost:5000/cats');
+                const res = await fetch(import.meta.env.VITE_BACKEND_LINK+'/cats');
                 const data = await res.json();
                 setCategories(data);
                

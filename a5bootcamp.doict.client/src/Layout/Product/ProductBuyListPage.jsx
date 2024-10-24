@@ -13,7 +13,7 @@ const ProductBuyListPage = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/productBuyQuery/${user.email}`
+        import.meta.env.VITE_BACKEND_LINK+`/productBuyQuery/${user.email}`
       );
       const data = await response.json();
       console.log("Buy Page: ",data);
