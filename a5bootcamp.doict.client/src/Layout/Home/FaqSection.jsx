@@ -4,8 +4,14 @@ function FaqSection() {
   return (
     <div className="bg-base-100 text-base-content border-base-300 border-t px-10 py-4 m-5">
       <div className='text-center'>
-          <h2 className='text-red-700 decoration-solid text-2xl'>Frequently Asked Question</h2>
-      </div>
+    <div class="stats shadow text-center">
+    <div class="stat">
+        <div class="stat-title"></div>
+        <div class="stat-value">FAQ</div>
+        <div class="stat-desc"></div>
+    </div>
+    </div>
+    </div>
     <div class="collapse collapse-arrow">
         <input type="radio" name="my-accordion-2" checked="checked" />
         <div class="collapse-title text-xl font-medium">About Movie Bazar</div>
